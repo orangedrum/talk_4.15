@@ -4,26 +4,43 @@
     <meta charset="UTF-8">
     <title>UX/JS Talk</title>
     <link rel="stylesheet" href="main.css">
-    <script type="text/javascript">
+    <script src="https://d26b395fwzu5fz.cloudfront.net/3.2.4/keen.min.js" type="text/javascript"></script>
 
     <script type="text/javascript">
-      var Keen=Keen||{configure:function(a,b,c){this._pId=a;this._ak=b;this._op=c},addEvent:function(a,b,c,d){this._eq=this._eq||[];this._eq.push([a,b,c,d])},setGlobalProperties:function(a){this._gp=a},onChartsReady:function(a){this._ocrq=this._ocrq||[];this._ocrq.push(a)}};
-      (function(){var a=document.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"==document.location.protocol?"https://":"http://")+"dc8na2hxrj29i.cloudfront.net/code/keen-2.0.0-min.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})();
+      var client = new Keen({
+        projectId: "5512fc13672e6c7ecb96c65d",   // String (required always)
+        writeKey: "05066c4ce53b859e2205ee7bbd5db7ea15c2817943ed9ab399f028ed6a78c5cde294bc6666f5b30fc1c027e652facee4a60ba04701bfd65e367fa79ce48d92aba3f3b8f7499d9247f0240d92ef249478e316d904f413501ec082810f4aac3fc64d4154859d7c21c62aafae7031cf6f5e",     // String (required for sending data)
+        readKey: "Y4543c056ee4dcc133f981ca07c44b9ae2780ba81374dd266dad3808a13ad9fc84ef3616c9748f5d5764fd3f186b70c9db3ed7c8db46903103de2b600ce48441d2a9fd4c627e5b302ad75b12d55cd07852215f018e3072c6a5fe3f9af210e0b53fdf78e47819879dfe3a25402d00da0f4",       // String (required for querying data)
+        protocol: "https",              // String (optional: https | http | auto)
+        host: "api.keen.io/3.0",        // String (optional)
+        requestType: "jsonp"            // String (optional: jsonp, xhr, beacon)
+      });
 
-              // create an event as a JS object
-        var purchase = {
-            category: "magical animals",
-            animal_type: "pegasus",
-            username: "perseus",
-            payment_type: "head of medusa",
-            price: 4.50
-        };
-         
-        // add it to the "purchases" collection
-        Keen.addEvent("purchases", purchase);
-   
-      // Configure the Keen object with your Project ID and API Key
-      Keen.configure("Talk_4.15", "034BF244B54589BF10EFDE5BCDEF3381");
+      // Configure an instance for your project
+      var client = new Keen({
+        projectId: "5512fc13672e6c7ecb96c65d",
+        writeKey: "05066c4ce53b859e2205ee7bbd5db7ea15c2817943ed9ab399f028ed6a78c5cde294bc6666f5b30fc1c027e652facee4a60ba04701bfd65e367fa79ce48d92aba3f3b8f7499d9247f0240d92ef249478e316d904f413501ec082810f4aac3fc64d4154859d7c21c62aafae7031cf6f5e"
+      });
+
+      // Create a data object with the properties you want to send
+      var purchaseEvent = {
+        item: "golden gadget",  
+        price: 25.50,
+        referrer: document.referrer,
+        keen: {
+          timestamp: new Date().toISOString()
+        }
+      };
+
+      // Send it to the "purchases" collection
+      client.addEvent("purchases", purchaseEvent, function(err, res){
+        if (err) {
+          // there was an error!
+        }
+        else {
+          // see sample response below
+        }
+      });
     </script>
 </head>
 <body>
