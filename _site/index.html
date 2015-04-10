@@ -52,7 +52,7 @@
                 <div class="caption">
                   <h3>Thumbnail label</h3>
                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus magnam temporibus provident iusto minus consequuntur culpa, inventore natus, pariatur omnis. Soluta esse culpa eum, enim amet iusto, architecto veniam cupiditate!</p>
-                  <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                  <p><a id="btn1" href="#" class="btn btn-primary" role="button">Button</a> <a id="btn2" href="#" class="btn btn-default" role="button">Button</a></p>
                 </div>
               </div>
             </div>
@@ -62,7 +62,7 @@
                 <div class="caption">
                   <h3>Thumbnail label</h3>
                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus magnam temporibus provident iusto minus consequuntur culpa, inventore natus, pariatur omnis. Soluta esse culpa eum, enim amet iusto, architecto veniam cupiditate!</p>
-                  <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                  <p><a id="btn3" href="#" class="btn btn-primary" role="button">Button</a> <a id="btn4" href="#" class="btn btn-default" role="button">Button</a></p>
                 </div>
               </div>
             </div>
@@ -72,7 +72,7 @@
                 <div class="caption">
                   <h3>Thumbnail label</h3>
                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus magnam temporibus provident iusto minus consequuntur culpa, inventore natus, pariatur omnis. Soluta esse culpa eum, enim amet iusto, architecto veniam cupiditate!</p>
-                  <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                  <p><a id="btn5" href="#" class="btn btn-primary" role="button">Button</a> <a id="btn6" href="#" class="btn btn-default" role="button">Button</a></p>
                 </div>
               </div>
             </div>
@@ -100,6 +100,13 @@
 
       $( ".main-btn" ).on( "click", recordEvent);
 
+      $( "#btn1" ).on( "click", recordEvent1);
+      $( "#btn2" ).on( "click", recordEvent2);
+      $( "#btn3" ).on( "click", recordEvent3);
+      $( "#btn4" ).on( "click", recordEvent4);
+      $( "#btn5" ).on( "click", recordEvent5);
+      $( "#btn6" ).on( "click", recordEvent6);
+
 
       function recordEvent(){
         // Create a data object with the properties you want to send
@@ -114,6 +121,28 @@
 
         // Send it to the "purchases" collection
         client.addEvent("purchases", purchaseEvent, function(err, res){
+          if (err) {
+            // there was an error!
+          }
+          else {
+            // see sample response below
+          }
+        });
+      };
+
+      function recordEvent1(){
+        // Create a data object with the properties you want to send
+        var purchaseEvent1 = {
+          item: "goat gadget1",  
+          price: 5.50,
+          referrer: document.referrer,
+          keen: {
+            timestamp: new Date().toISOString()
+          }
+        };
+
+        // Send it to the "purchases" collection
+        client.addEvent("purchases", purchaseEvent1, function(err, res){
           if (err) {
             // there was an error!
           }
