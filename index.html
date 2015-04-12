@@ -114,7 +114,7 @@
           <div class="col-lg-12">
             <div class="panel panel-default">
               <div class="panel-body">
-                <div id="count-pageview-metric"></div>
+                <div id="my_chart"></div>
               </div> 
             </div>
           </div>
@@ -319,14 +319,16 @@
 
 
         //visualization
+        var client = new Keen({
+          projectId: "your_project_id",
+          readKey: "your_read_key"
+        });
         Keen.ready(function(){
           var query = new Keen.Query("count", {
             eventCollection: "popmusic1"
           });
-          client.draw(count, document.getElementById("count-pageviews-metric"), {
-                chartType: "metric",
-                title: "Total Music Clicks",
-                colors: ["#49c5b1"]
+          client.draw(query, document.getElementById("my_chart"), {
+            // Custom configuration here
           });
         });
       };
