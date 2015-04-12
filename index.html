@@ -128,7 +128,7 @@
 
 
       //hm page listeners
-      $( "#firstgoal" ).on( "click", goatEvent1);
+      $( "#firstgoal" ).on( "click", goalEvent1);
       $( "#distraction_accessories" ).on( "click", recordAccessories1);
       $( "#distraction_popmusic" ).on( "click", recordPop1);
       $( "#distraction_travel" ).on( "click", recordTravel1);
@@ -141,7 +141,7 @@
       function goalEvent1(){
         // Create a data object with the properties you want to send
         var goalEvent = {
-          item: "goalEvent",
+          item: "goalEvent1",
           referrer: document.referrer,
           keen: {
             timestamp: new Date().toISOString()
@@ -149,7 +149,7 @@
         };
 
         // Send it to the "purchases" collection
-        client.addEvent("goalEvent", funnelGoal, function(err, res){
+        client.addEvent("goalEvent1", funnelGoal, function(err, res){
           if (err) {
             // there was an error!
           }
