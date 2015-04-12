@@ -313,13 +313,15 @@
 
 
         //visualization
-        var count = new Keen.Query("count", {
-          eventCollection: "popmusic1"
-        });
-        client.draw(count, document.getElementById("count-pageviews-metric"), {
-          chartType: "metric",
-          title: "Pop Music Clicks",
-          colors: ["#49c5b1"]
+        Keen.ready(function(){
+          var query = new Keen.Query("count", {
+            eventCollection: "popmusic1"
+          });
+          client.draw(count, document.getElementById("count-pageviews-metric"), {
+                chartType: "metric",
+                title: "Total Music Clicks",
+                colors: ["#49c5b1"]
+          });
         });
       };
     </script>

@@ -108,6 +108,11 @@
             <p><a id="distraction_politics" href="#">read more...</a></p>
           </aside>
         </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div id="count-pageviews-metric"></div>
+          </div>
+        </div>
     </div>
 </body>
 <script type="text/javascript">
@@ -128,7 +133,7 @@
 
 
       //hm page listeners
-      $( "#firstgoal" ).on( "click", goatEvent1);
+      $( "#firstgoal" ).on( "click", goalEvent1);
       $( "#distraction_accessories" ).on( "click", recordAccessories1);
       $( "#distraction_popmusic" ).on( "click", recordPop1);
       $( "#distraction_travel" ).on( "click", recordTravel1);
@@ -140,7 +145,7 @@
 
       function goalEvent1(){
         // Create a data object with the properties you want to send
-        var purchaseEvent = {
+        var goalEvent = {
           item: "goalEvent1",
           referrer: document.referrer,
           keen: {
@@ -149,7 +154,7 @@
         };
 
         // Send it to the "purchases" collection
-        client.addEvent("goalpurchase1", purchaseEvent1, function(err, res){
+        client.addEvent("goalEvent1", goalEvent1, function(err, res){
           if (err) {
             // there was an error!
           }
@@ -170,7 +175,7 @@
         };
 
         // Send it to the "accessories" collection
-        client.addEvent("accessories1", funnelAccess, function(err, res){
+        client.addEvent("accessories1", recordAccessories1, function(err, res){
           if (err) {
             // there was an error!
           }
@@ -191,7 +196,7 @@
         };
 
         // Send it to the "popmusic" collection
-        client.addEvent("popmusic1", funnelPopMusic, function(err, res){
+        client.addEvent("popmusic1", recordPop1, function(err, res){
           if (err) {
             // there was an error!
           }
@@ -201,7 +206,7 @@
         });
       };
 
-      function recordTravel(){
+      function recordTravel1(){
         // Create a data object with the properties you want to send
         var recordTravel1 = {
           item: "travel1",
@@ -212,7 +217,7 @@
         };
 
         // Send it to the "purchases" collection
-        client.addEvent("travel1", funnelTravel, function(err, res){
+        client.addEvent("travel1", recordTravel1, function(err, res){
           if (err) {
             // there was an error!
           }
@@ -233,7 +238,7 @@
         };
 
         // Send it to the "purchases" collection
-        client.addEvent("politics1", funnelPolitics, function(err, res){
+        client.addEvent("politics1", recordPolitics1, function(err, res){
           if (err) {
             // there was an error!
           }
@@ -254,7 +259,7 @@
         };
 
         // Send it to the "purchases" collection
-        client.addEvent("recordFootware1", funnelFootware, function(err, res){
+        client.addEvent("clicks", recordFootware1, function(err, res){
           if (err) {
             // there was an error!
           }
@@ -275,7 +280,7 @@
         };
 
         // Send it to the "purchases" collection
-        client.addEvent("recordFoodie1", funnelFoodie, function(err, res){
+        client.addEvent("clicks", recordFoodie1, function(err, res){
           if (err) {
             // there was an error!
           }
@@ -295,14 +300,28 @@
           }
         };
 
-        // Send it to the "purchases" collection
-        client.addEvent("recordChairs1", funnelChairs, function(err, res){
+        // Send it to the "clicks" collection
+        client.addEvent("clicks", recordChairs1, function(err, res){
           if (err) {
             // there was an error!
           }
           else {
             // see sample response below
           }
+        });
+
+
+
+        //visualization
+        Keen.ready(function(){
+          var query = new Keen.Query("count", {
+            eventCollection: "popmusic1"
+          });
+          client.draw(count, document.getElementById("count-pageviews-metric"), {
+                chartType: "metric",
+                title: "Total Pageviews",
+                colors: ["#49c5b1"]
+          });
         });
       };
     </script>
