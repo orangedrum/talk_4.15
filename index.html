@@ -108,6 +108,11 @@
             <p><a id="distraction_politics" href="#">read more...</a></p>
           </aside>
         </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div id="count-pageviews-metric"></div>
+          </div>
+        </div>
     </div>
 </body>
 <script type="text/javascript">
@@ -254,7 +259,7 @@
         };
 
         // Send it to the "purchases" collection
-        client.addEvent("recordFootware1", recordFootware1, function(err, res){
+        client.addEvent("clicks", recordFootware1, function(err, res){
           if (err) {
             // there was an error!
           }
@@ -275,7 +280,7 @@
         };
 
         // Send it to the "purchases" collection
-        client.addEvent("recordFoodie1", recordFoodie1, function(err, res){
+        client.addEvent("clicks", recordFoodie1, function(err, res){
           if (err) {
             // there was an error!
           }
@@ -295,14 +300,26 @@
           }
         };
 
-        // Send it to the "purchases" collection
-        client.addEvent("recordChairs1", recordChairs1, function(err, res){
+        // Send it to the "clicks" collection
+        client.addEvent("clicks", recordChairs1, function(err, res){
           if (err) {
             // there was an error!
           }
           else {
             // see sample response below
           }
+        });
+
+
+
+        //visualization
+        var count = new Keen.Query("count", {
+          eventCollection: "clicks"
+        });
+        client.draw(count, document.getElementById("count-pageviews-metric"), {
+          chartType: "metric",
+          title: "Total Page Clicks",
+          colors: ["#49c5b1"]
         });
       };
     </script>
