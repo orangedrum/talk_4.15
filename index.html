@@ -152,7 +152,7 @@
 
       function goalEvent1(){
         // Create a data object with the properties you want to send
-        var goalEvent = {
+        var goalEvent1 = {
           item: "goalEvent1",
           referrer: document.referrer,
           keen: {
@@ -161,7 +161,7 @@
         };
 
         // Send it to the "purchases" collection
-        client.addEvent("goalEvent1", goalEvent1, function(err, res){
+        client.addEvent("clicks", goalEvent1, function(err, res){
           if (err) {
             // there was an error!
           }
