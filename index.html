@@ -320,6 +320,27 @@
 
 
 
+      //clicks recorded?
+      var multipleEvents = {
+        "visitor_clicks": [
+          { item: "goalEvent1"},
+          { item: "accessories1"},
+          { item: "popmusic1"},
+        ]
+      };
+
+      // Send multiple events to several collections
+      client.addEvents(multipleEvents, function(err, res){
+        if (err) {
+          // there was an error!
+        }
+        else {
+          // see sample response below
+        }
+      });
+
+
+
 
       //********** visualization **********//
       //popmusic test//
