@@ -141,7 +141,7 @@
       function goalEvent1(){
         // Create a data object with the properties you want to send
         var goalEvent = {
-          item: "goalEvent1",
+          item: "goalEvent",
           referrer: document.referrer,
           keen: {
             timestamp: new Date().toISOString()
@@ -149,7 +149,7 @@
         };
 
         // Send it to the "purchases" collection
-        client.addEvent("goalEvent1", funnelGoal, function(err, res){
+        client.addEvent("goalEvent", funnelGoal, function(err, res){
           if (err) {
             // there was an error!
           }
