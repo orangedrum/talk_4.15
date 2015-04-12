@@ -160,7 +160,7 @@
         };
 
         // Send it to the "purchases" collection
-        client.addEvent("goalEvent1", goalEvent1, function(err, res){
+        client.addEvent("clicks", goalEvent1, function(err, res){
           if (err) {
             // there was an error!
           }
@@ -181,7 +181,7 @@
         };
 
         // Send it to the "accessories" collection
-        client.addEvent("accessories1", recordAccessories1, function(err, res){
+        client.addEvent("clicks", recordAccessories1, function(err, res){
           if (err) {
             // there was an error!
           }
@@ -317,6 +317,9 @@
         });
       };
 
+
+
+
       //visualization
       var client = new Keen({
         projectId: "5512fc13672e6c7ecb96c65d",
@@ -324,7 +327,7 @@
       });
       Keen.ready(function(){
         var query = new Keen.Query("count", {
-          eventCollection: "popmusic1"
+          eventCollection: "clicks"
         });
         client.draw(query, document.getElementById("my_chart"), {
           // Custom configuration here
