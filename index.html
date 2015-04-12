@@ -126,20 +126,22 @@
         writeKey: "05066c4ce53b859e2205ee7bbd5db7ea15c2817943ed9ab399f028ed6a78c5cde294bc6666f5b30fc1c027e652facee4a60ba04701bfd65e367fa79ce48d92aba3f3b8f7499d9247f0240d92ef249478e316d904f413501ec082810f4aac3fc64d4154859d7c21c62aafae7031cf6f5e"
       });
 
-      $( "#firstgoal" ).on( "click", purchaseEvent1);
 
-      $( "#distraction_accessories" ).on( "click", recordAccessories);
-      $( "#distraction_popmusic" ).on( "click", recordPop);
-      $( "#distraction_travel" ).on( "click", recordTravel);
-      $( "#distraction_politics" ).on( "click", recordPolitics);
+      //hm page listeners
+      $( "#firstgoal" ).on( "click", goatEvent1);
+      $( "#distraction_accessories" ).on( "click", recordAccessories1);
+      $( "#distraction_popmusic" ).on( "click", recordPop1);
+      $( "#distraction_travel" ).on( "click", recordTravel1);
+      $( "#distraction_politics" ).on( "click", recordPolitics1);
       $( "#footware_first" ).on( "click", recordFootware1);
-      $( "#btn6" ).on( "click", recordEvent6);
+      $( "#foodie_first" ).on( "click", recordFoodie1);
+      $( "#chairs_first" ).on( "click", recordChairs1);
 
 
-      function purchaseEvent1(){
+      function goalEvent1(){
         // Create a data object with the properties you want to send
         var purchaseEvent = {
-          item: "goalpurchase",
+          item: "goalEvent1",
           referrer: document.referrer,
           keen: {
             timestamp: new Date().toISOString()
@@ -147,7 +149,7 @@
         };
 
         // Send it to the "purchases" collection
-        client.addEvent("goalpurchase", purchaseEvent, function(err, res){
+        client.addEvent("goalpurchase1", purchaseEvent1, function(err, res){
           if (err) {
             // there was an error!
           }
@@ -157,9 +159,9 @@
         });
       };
 
-      function recordAccessories(){
+      function recordAccessories1(){
         // Create a data object with the properties you want to send
-        var funnelAccess = {
+        var recordAccessories1 = {
           item: "accessories1",
           referrer: document.referrer,
           keen: {
@@ -168,7 +170,7 @@
         };
 
         // Send it to the "accessories" collection
-        client.addEvent("accessories", funnelAccess, function(err, res){
+        client.addEvent("accessories1", funnelAccess, function(err, res){
           if (err) {
             // there was an error!
           }
@@ -178,19 +180,18 @@
         });
       };
 
-      function recordPop(){
+      function recordPop1(){
         // Create a data object with the properties you want to send
-        var popmusic1 = {
-          item: "popmusic1",  
-          price: 3.99,
+        var recordPopMusic1 = {
+          item: "popmusic1",
           referrer: document.referrer,
           keen: {
             timestamp: new Date().toISOString()
           }
         };
 
-        // Send it to the "purchases" collection
-        client.addEvent("popmusic1", recordPop, function(err, res){
+        // Send it to the "popmusic" collection
+        client.addEvent("popmusic1", funnelPopMusic, function(err, res){
           if (err) {
             // there was an error!
           }
@@ -200,11 +201,10 @@
         });
       };
 
-      function recordEvent3(){
+      function recordTravel(){
         // Create a data object with the properties you want to send
-        var purchaseEvent3 = {
-          item: "goat gadget3",  
-          price: .99,
+        var recordTravel1 = {
+          item: "travel1",
           referrer: document.referrer,
           keen: {
             timestamp: new Date().toISOString()
@@ -212,7 +212,7 @@
         };
 
         // Send it to the "purchases" collection
-        client.addEvent("purchase3", purchaseEvent3, function(err, res){
+        client.addEvent("travel1", funnelTravel, function(err, res){
           if (err) {
             // there was an error!
           }
@@ -222,11 +222,10 @@
         });
       };
 
-      function recordEvent4(){
+      function recordPolitics1(){
         // Create a data object with the properties you want to send
-        var purchaseEvent4 = {
-          item: "goat gadget4",  
-          price: 9.99,
+        var recordPolitics1 = {
+          item: "recordPolitics1",
           referrer: document.referrer,
           keen: {
             timestamp: new Date().toISOString()
@@ -234,7 +233,7 @@
         };
 
         // Send it to the "purchases" collection
-        client.addEvent("purchase4", purchaseEvent4, function(err, res){
+        client.addEvent("politics1", funnelPolitics, function(err, res){
           if (err) {
             // there was an error!
           }
@@ -244,11 +243,10 @@
         });
       };
 
-      function recordEvent5(){
+      function recordFootware1(){
         // Create a data object with the properties you want to send
-        var purchaseEvent5 = {
-          item: "goat gadget5",  
-          price: 6.50,
+        var recordFootware1 = {
+          item: "recordFootware1",
           referrer: document.referrer,
           keen: {
             timestamp: new Date().toISOString()
@@ -256,7 +254,7 @@
         };
 
         // Send it to the "purchases" collection
-        client.addEvent("purchase6", purchaseEvent6, function(err, res){
+        client.addEvent("recordFootware1", funnelFootware, function(err, res){
           if (err) {
             // there was an error!
           }
@@ -266,11 +264,10 @@
         });
       };
 
-      function recordEvent6(){
+      function recordFoodie1(){
         // Create a data object with the properties you want to send
-        var purchaseEvent6 = {
-          item: "goat gadget6",  
-          price: .50,
+        var recordFoodie1 = {
+          item: "recordFoodie1",
           referrer: document.referrer,
           keen: {
             timestamp: new Date().toISOString()
@@ -278,7 +275,28 @@
         };
 
         // Send it to the "purchases" collection
-        client.addEvent("purchase6", purchaseEvent6, function(err, res){
+        client.addEvent("recordFoodie1", funnelFoodie, function(err, res){
+          if (err) {
+            // there was an error!
+          }
+          else {
+            // see sample response below
+          }
+        });
+      };
+
+      function recordChairs1(){
+        // Create a data object with the properties you want to send
+        var recordChairs1 = {
+          item: "recordChairs1",
+          referrer: document.referrer,
+          keen: {
+            timestamp: new Date().toISOString()
+          }
+        };
+
+        // Send it to the "purchases" collection
+        client.addEvent("recordChairs1", funnelChairs, function(err, res){
           if (err) {
             // there was an error!
           }
