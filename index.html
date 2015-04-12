@@ -321,23 +321,23 @@
 
 
       //clicks recorded?
-      var multipleEvents = {
-        "visitor_clicks": [
-          { item: "goalEvent1"},
-          { item: "accessories1"},
-          { item: "popmusic1"},
-        ]
-      };
+      // var multipleEvents = {
+      //   "visitor_clicks": [
+      //     { item: "goalEvent1"},
+      //     { item: "accessories1"},
+      //     { item: "popmusic1"},
+      //   ]
+      // };
 
-      // Send multiple events to several collections
-      client.addEvents(multipleEvents, function(err, res){
-        if (err) {
-          // there was an error!
-        }
-        else {
-          // see sample response below
-        }
-      });
+      // // Send multiple events to several collections
+      // client.addEvents(multipleEvents, function(err, res){
+      //   if (err) {
+      //     // there was an error!
+      //   }
+      //   else {
+      //     // see sample response below
+      //   }
+      // });
 
 
 
@@ -358,14 +358,14 @@
 
 
         //pie chart test//
-        // var visitor_clicks = new Keen.Query("count", {
-        //   eventCollection: "visitor_clicks",
-        //   groupBy: "item"
-        // });
-        // client.draw(visitor_clicks, document.getElementById("count-pageviews-piechart"), {
-        //   chartType: "piechart",
-        //   title: "Clicks"
-        // });
+        var visitor_clicks = new Keen.Query("count", {
+          eventCollection: "visitor_clicks",
+          groupBy: "item"
+        });
+        client.draw(visitor_clicks, document.getElementById("count-pageviews-piechart"), {
+          chartType: "piechart",
+          title: "Clicks"
+        });
       });
     </script>
 
