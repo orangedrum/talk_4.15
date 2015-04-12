@@ -182,7 +182,7 @@
         };
 
         // Send it to the "accessories" collection
-        client.addEvent("accessories1", recordAccessories1, function(err, res){
+        client.addEvent("visitor_clicks", recordAccessories1, function(err, res){
           if (err) {
             // there was an error!
           }
@@ -308,7 +308,7 @@
         };
 
         // Send it to the "clicks" collection
-        client.addEvent("clicks", recordChairs1, function(err, res){
+        client.addEvent("visitor_clicks", recordChairs1, function(err, res){
           if (err) {
             // there was an error!
           }
@@ -338,10 +338,10 @@
 
       //pie chart test//
       var visitor_clicks = new Keen.Query("count", {
-        eventCollection: "visitor_clicks",
+        eventCollection: "clicks",
         groupBy: "item"
       });
-      client.draw(visitor_origins, document.getElementById("count-pageviews-piechart"), {
+      client.draw(visitor_clicks, document.getElementById("count-pageviews-piechart"), {
         chartType: "piechart",
         title: "Visitor Referrers"
       });
