@@ -160,7 +160,7 @@
         };
 
         // Send it to the "purchases" collection
-        client.addEvent("clicks", goalEvent1, function(err, res){
+        client.addEvent("visitor_clicks", goalEvent1, function(err, res){
           if (err) {
             // there was an error!
           }
@@ -181,7 +181,7 @@
         };
 
         // Send it to the "accessories" collection
-        client.addEvent("clicks", recordAccessories1, function(err, res){
+        client.addEvent("accessories1", recordAccessories1, function(err, res){
           if (err) {
             // there was an error!
           }
@@ -320,19 +320,31 @@
 
 
 
-      //visualization
+      //********** visualization **********//
+      //popmusic test//
       var client = new Keen({
         projectId: "5512fc13672e6c7ecb96c65d",
         readKey: "4543c056ee4dcc133f981ca07c44b9ae2780ba81374dd266dad3808a13ad9fc84ef3616c9748f5d5764fd3f186b70c9db3ed7c8db46903103de2b600ce48441d2a9fd4c627e5b302ad75b12d55cd07852215f018e3072c6a5fe3f9af210e0b53fdf78e47819879dfe3a25402d00da0f4"
       });
       Keen.ready(function(){
         var query = new Keen.Query("count", {
-          eventCollection: "clicks"
+          eventCollection: "popmusic1"
         });
         client.draw(query, document.getElementById("my_chart"), {
           // Custom configuration here
         });
       });
+
+      //pie chart test//
+      var visitor_clicks = new Keen.Query("count", {
+        eventCollection: "visitor_clicks",
+        groupBy: "item"
+      });
+      client.draw(visitor_origins, document.getElementById("count-pageviews-piechart"), {
+        chartType: "piechart",
+        title: "Visitor Referrers"
+      });
+<div id="count-pageviews-piechart"></div>
     </script>
 
 </html>
