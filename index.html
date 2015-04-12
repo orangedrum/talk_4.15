@@ -315,23 +315,21 @@
             // see sample response below
           }
         });
-
-
-
-        //visualization
-        var client = new Keen({
-          projectId: "your_project_id",
-          readKey: "your_read_key"
-        });
-        Keen.ready(function(){
-          var query = new Keen.Query("count", {
-            eventCollection: "popmusic1"
-          });
-          client.draw(query, document.getElementById("my_chart"), {
-            // Custom configuration here
-          });
-        });
       };
+
+      //visualization
+      var client = new Keen({
+        projectId: "your_project_id",
+        readKey: "your_read_key"
+      });
+      Keen.ready(function(){
+        var query = new Keen.Query("count", {
+          eventCollection: "popmusic1"
+        });
+        client.draw(query, document.getElementById("my_chart"), {
+          // Custom configuration here
+        });
+      });
     </script>
 
 </html>
