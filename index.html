@@ -355,16 +355,17 @@
         client.draw(query, document.getElementById("my_chart"), {
           // Custom configuration here
         });
-      });
 
-      //pie chart test//
-      var visitor_clicks = new Keen.Query("count", {
-        eventCollection: "clicks",
-        groupBy: "item"
-      });
-      client.draw(visitor_clicks, document.getElementById("count-pageviews-piechart"), {
-        chartType: "piechart",
-        title: "Visitor Referrers"
+
+        //pie chart test//
+        var visitor_clicks = new Keen.Query("count", {
+          eventCollection: "visitor_clicks",
+          groupBy: "item"
+        });
+        client.draw(visitor_clicks, document.getElementById("count-pageviews-piechart"), {
+          chartType: "piechart",
+          title: "Clicks"
+        });
       });
     </script>
 
