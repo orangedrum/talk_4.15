@@ -321,11 +321,11 @@
 
 
     //pie chart test//
-    var count = new Keen.Query("count", {
+    var ctalinks = new Keen.Query("count", {
       eventCollection: "visitor_clicks",
       groupBy: "item"
     });
-    client.draw(visitor_clicks, document.getElementById("count-pageviews-piechart"), {
+    client.draw(ctalinks, document.getElementById("count-pageviews-piechart"), {
       chartType: "piechart",
       title: "Clicks on CTAs"
     });
