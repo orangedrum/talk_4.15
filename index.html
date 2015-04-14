@@ -254,10 +254,10 @@
   Keen.ready(function(){
     
     //popmusic test//
-    var query = new Keen.Query("count", {
+    var music_clicks = new Keen.Query("count", {
       eventCollection: "popmusic1"
     });
-    client.draw(popmusic1, document.getElementById("my_chart"), {
+    client.draw(music_clicks, document.getElementById("my_chart"), {
       // Custom configuration here
     });
 
@@ -271,7 +271,7 @@
       chartType: "piechart",
       title: "Clicks"
     });
-    
+
   });
 </script>
 
