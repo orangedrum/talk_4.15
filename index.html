@@ -195,7 +195,7 @@
   function recordPop(){
     // Create a data object with the properties you want to send
     var recordPopMusic = {
-      item: "recordPopmusic",
+      item: "recordPop",
       referrer: document.referrer,
       keen: {
         timestamp: new Date().toISOString()
@@ -203,7 +203,7 @@
     };
 
     // Send it to the collection
-    client.addEvent("recordPopMusic", recordPopMusic, function(err, res){
+    client.addEvent("recordPop", recordPop, function(err, res){
     });
   };
 
@@ -290,7 +290,7 @@
     "visitor_clicks": [
       { item: "recordEyewear"},
       { item: "recordAccessories"},
-      { item: "recordPopmusic"},
+      { item: "recordPop"},
       { item: "recordTravel"},
       { item: "recordPolitics"},
       { item: "recordFootware"},
