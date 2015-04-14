@@ -80,7 +80,7 @@
                 <div class="caption">
                   <h3>Indulge Your Foodie</h3>
                   <p>This salad highlights the green bean in a very special way. The quinoa adds texture, but it’s the sliced almond that add that extra crunch that this salad so desperately needs. Plus with a little almond extract drizzled into the mix, this green bean and almond quinoa salad is quite divine.</p>
-                  <p><a id="foodie_first" href="#" class="btn btn-primary" role="button">Explore Cuisine</a></p>
+                  <p><a id="foodie_first" href="#" class="cta-goal btn btn-primary" role="button">Explore Cuisine</a></p>
                 </div>
               </div>
             </div>
@@ -154,6 +154,9 @@
   $( "#foodie_first" ).on( "click", recordFoodie);
   $( "#chairs_first" ).on( "click", recordChairs);
 
+  //********** Goal **********//
+  $( ".cta-goal" ).on( "click", recordGoal);
+
   //badness
   $("#big_bad_delete").on("click", deleteKeenData);
 
@@ -173,7 +176,7 @@
     };
 
     // Send it to the collection
-    client.addEvent("recordEyewear", recordEyewear, function(err, res){
+    client.addEvent("ctas", recordEyewear, function(err, res){
     });
   };
 
@@ -188,7 +191,7 @@
     };
 
     // Send it to the collection
-    client.addEvent("recordAccessories", recordAccessories, function(err, res){
+    client.addEvent("ctas", recordAccessories, function(err, res){
     });
   };
 
@@ -203,7 +206,7 @@
     };
 
     // Send it to the collection
-    client.addEvent("recordPop", recordPop, function(err, res){
+    client.addEvent("ctas", recordPop, function(err, res){
     });
   };
 
@@ -218,7 +221,7 @@
     };
 
     // Send it to the collection
-    client.addEvent("recordTravel", recordTravel, function(err, res){
+    client.addEvent("ctas", recordTravel, function(err, res){
     });
   };
 
@@ -227,13 +230,14 @@
     var recordPolitics = {
       item: "recordPolitics",
       referrer: document.referrer,
+      category: "ctas",
       keen: {
         timestamp: new Date().toISOString()
       }
     };
 
     // Send it to the collection
-    client.addEvent("recordPolitics", recordPolitics, function(err, res){
+    client.addEvent("ctas", recordPolitics, function(err, res){
     });
   };
 
@@ -248,7 +252,7 @@
     };
 
     // Send it to the collection
-    client.addEvent("recordFootware", recordFootware, function(err, res){
+    client.addEvent("ctas", recordFootware, function(err, res){
     });
   };
 
@@ -263,7 +267,7 @@
     };
 
     // Send it to the collection
-    client.addEvent("recordFoodie", recordFoodie, function(err, res){
+    client.addEvent("ctas", recordFoodie, function(err, res){
     });
   };
 
@@ -278,29 +282,58 @@
     };
 
     // Send it to the collection
-    client.addEvent("recordChairs", recordChairs, function(err, res){
+    client.addEvent("ctas", recordChairs, function(err, res){
     });
   };
 
 
   
 
-  //********** Recording Clicks as Group **********//
-  var multipleEvents = {
-    "visitor_clicks": [
-      { item: "recordEyewear"},
-      { item: "recordAccessories"},
-      { item: "recordPop"},
-      { item: "recordTravel"},
-      { item: "recordPolitics"},
-      { item: "recordFootware"},
-      { item: "recordFoodie"},
-      { item: "recordChairs"}
-    ]
+  //********** Recording Goal **********//
+  function recordGoal(){
+    // Create a data object with the properties you want to send
+    var recordFoodie = {
+      item: "recordGoal",
+      referrer: document.referrer,
+      keen: {
+        timestamp: new Date().toISOString()
+      }
+    };
+
+    // Send it to the collection
+    client.addEvent("ctaGoal", recordFoodie, function(err, res){
+    });
   };
-  // Send multiple events to several collections
-  client.addEvents(multipleEvents, function(err, res){
-  });
+
+
+
+
+
+
+  //********** Recording Clicks as Group **********//
+  // function recordAllEvents(){
+  //   var multipleEvents = {
+  //     "visitor_clicks": [
+  //       { item: "recordEyewear"},
+  //       { item: "recordAccessories"},
+  //       { item: "recordPop"},
+  //       { item: "recordTravel"},
+  //       { item: "recordPolitics"},
+  //       { item: "recordFootware"},
+  //       { item: "recordFoodie"},
+  //       { item: "recordChairs"}
+  //     ]
+  //   };
+  //   // Send multiple events to several collections
+  //   client.addEvents(visitor_clicks, function(err, res){
+  //     if (err) {
+  //       // there was an error!
+  //     }
+  //     else {
+  //       // see sample response below
+  //     }
+  //   });
+  // };
 
 
 
@@ -309,9 +342,9 @@
   //********** visualization **********//
   Keen.ready(function(){
 
-    //popmusic test//
+    //goal count//
     var count = new Keen.Query("count", {
-      eventCollection: "recordFoodie"
+      eventCollection: "ctaGoal"
     });
     client.draw(count, document.getElementById("my_chart"), {
       chartType: "metric",
@@ -321,19 +354,33 @@
 
 
     //pie chart test//
-    var ctalinks = new Keen.Query("count", {
-      eventCollection: "visitor_clicks",
+    var pie_clicks = new Keen.Query("count", {
+      eventCollection: "ctas",
       groupBy: "item"
     });
-    client.draw(ctalinks, document.getElementById("count-pageviews-piechart"), {
+    client.draw(pie_clicks, document.getElementById("count-pageviews-piechart"), {
       chartType: "piechart",
       title: "Clicks on CTAs"
     });
+  
   });
 
   
+  
+
+
+
+
   //********** Delete All The Things **********//
   function deleteKeenData() {
+    //Goal Data
+    $.ajax({
+      url: 'https://api.keen.io/3.0/projects/5512fc13672e6c7ecb96c65d/events/recordGoal?api_key=034BF244B54589BF10EFDE5BCDEF3381',
+      type: 'DELETE',
+      success: function(result) {
+          alert('Keen data cleared!');
+      }
+    });
     //Eyewear Data
     $.ajax({
       url: 'https://api.keen.io/3.0/projects/5512fc13672e6c7ecb96c65d/events/recordEyewear?api_key=034BF244B54589BF10EFDE5BCDEF3381',
