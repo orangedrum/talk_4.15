@@ -122,7 +122,6 @@
         </div>
     </div>
 </body>
-
 <script type="text/javascript">
   var client = new Keen({
     projectId: "5512fc13672e6c7ecb96c65d",   // String (required always)
@@ -134,7 +133,7 @@
   });
 
 
-  //********** Fire all Functions When These Are Clicked **********//
+  //hm page listeners
   $( "#firstgoal" ).on( "click", goalEvent1);
   $( "#distraction_accessories" ).on( "click", recordAccessories1);
   $( "#distraction_popmusic" ).on( "click", recordPop1);
@@ -145,134 +144,212 @@
   $( "#chairs_first" ).on( "click", recordChairs1);
 
 
-  //********** Data Objects **********//
-  function goalEvent1(){
-    // Create a data object with the properties you want to send
-    var goalEvent1 = {
-      item: "goalEvent1",
-      referrer: document.referrer,
-      keen: {
-        timestamp: new Date().toISOString()
-      }
-    };
-  };
-
-  function recordAccessories1(){
-    // Create a data object with the properties you want to send
-    var recordAccessories1 = {
-      item: "accessories1",
-      referrer: document.referrer,
-      keen: {
-        timestamp: new Date().toISOString()
-      }
-    };
-  };
-
-  function recordPop1(){
-    // Create a data object with the properties you want to send
-    var recordPopMusic1 = {
-      item: "popmusic1",
-      referrer: document.referrer,
-      keen: {
-        timestamp: new Date().toISOString()
-      }
-    };
-  };
-
-  function recordTravel1(){
-    // Create a data object with the properties you want to send
-    var recordTravel1 = {
-      item: "travel1",
-      referrer: document.referrer,
-      keen: {
-        timestamp: new Date().toISOString()
-      }
-    };
-  };
-
-  function recordPolitics1(){
-    // Create a data object with the properties you want to send
-    var recordPolitics1 = {
-      item: "recordPolitics1",
-      referrer: document.referrer,
-      keen: {
-        timestamp: new Date().toISOString()
-      }
-    };
-  };
-
-  function recordFootware1(){
-    // Create a data object with the properties you want to send
-    var recordFootware1 = {
-      item: "recordFootware1",
-      referrer: document.referrer,
-      keen: {
-        timestamp: new Date().toISOString()
-      }
-    };
-  };
-
-  function recordFoodie1(){
-    // Create a data object with the properties you want to send
-    var recordFoodie1 = {
-      item: "recordFoodie1",
-      referrer: document.referrer,
-      keen: {
-        timestamp: new Date().toISOString()
-      }
-    };
-  };
-
-  function recordChairs1(){
-    // Create a data object with the properties you want to send
-    var recordChairs1 = {
-      item: "recordChairs1",
-      referrer: document.referrer,
-      keen: {
-        timestamp: new Date().toISOString()
-      }
-    };
-  };
 
 
-  //********** Record All Clicks **********//
-  var multipleEvents = {
-    "visitor_clicks": [
-      { item: "goalEvent1"},
-      { item: "accessories1"},
-      { item: "popmusic1"},
-      { item: "recordTravel1"},
-      { item: "recordPolitics1"},
-      { item: "recordFootware1"},
-      { item: "recordFoodie1"},
-      { item: "recordChairs1"}
-    ]
-  };
+      function recordAccessories1(){
+        // Create a data object with the properties you want to send
+        var recordAccessories1 = {
+          item: "accessories1",
+          referrer: document.referrer,
+          keen: {
+            timestamp: new Date().toISOString()
+          }
+        };
+
+        // Send it to the "accessories" collection
+        client.addEvent("recordAccessories1", recordAccessories1, function(err, res){
+          if (err) {
+            // there was an error!
+          }
+          else {
+            // see sample response below
+          }
+        });
+      };
+
+      function recordPop1(){
+        // Create a data object with the properties you want to send
+        var recordPopMusic1 = {
+          item: "popmusic1",
+          referrer: document.referrer,
+          keen: {
+            timestamp: new Date().toISOString()
+          }
+        };
+
+        // Send it to the "popmusic" collection
+        client.addEvent("recordPopMusic1", recordPopMusic1, function(err, res){
+          if (err) {
+            // there was an error!
+          }
+          else {
+            // see sample response below
+          }
+        });
+      };
+
+      function recordTravel1(){
+        // Create a data object with the properties you want to send
+        var recordTravel1 = {
+          item: "travel1",
+          referrer: document.referrer,
+          keen: {
+            timestamp: new Date().toISOString()
+          }
+        };
+
+        // Send it to the "purchases" collection
+        client.addEvent("recordTravel1", recordTravel1, function(err, res){
+          if (err) {
+            // there was an error!
+          }
+          else {
+            // see sample response below
+          }
+        });
+      };
+
+      function recordPolitics1(){
+        // Create a data object with the properties you want to send
+        var recordPolitics1 = {
+          item: "recordPolitics1",
+          referrer: document.referrer,
+          keen: {
+            timestamp: new Date().toISOString()
+          }
+        };
+
+        // Send it to the "purchases" collection
+        client.addEvent("recordPolitics1", recordPolitics1, function(err, res){
+          if (err) {
+            // there was an error!
+          }
+          else {
+            // see sample response below
+          }
+        });
+      };
+
+      function recordFootware1(){
+        // Create a data object with the properties you want to send
+        var recordFootware1 = {
+          item: "recordFootware1",
+          referrer: document.referrer,
+          keen: {
+            timestamp: new Date().toISOString()
+          }
+        };
+
+        // Send it to the "purchases" collection
+        client.addEvent("recordFootware1", recordFootware1, function(err, res){
+          if (err) {
+            // there was an error!
+          }
+          else {
+            // see sample response below
+          }
+        });
+      };
+
+      function recordFoodie1(){
+        // Create a data object with the properties you want to send
+        var recordFoodie1 = {
+          item: "recordFoodie1",
+          referrer: document.referrer,
+          keen: {
+            timestamp: new Date().toISOString()
+          }
+        };
+
+        // Send it to the "purchases" collection
+        client.addEvent("recordFoodie1", recordFoodie1, function(err, res){
+          if (err) {
+            // there was an error!
+          }
+          else {
+            // see sample response below
+          }
+        });
+      };
+
+      function recordChairs1(){
+        // Create a data object with the properties you want to send
+        var recordChairs1 = {
+          item: "recordChairs1",
+          referrer: document.referrer,
+          keen: {
+            timestamp: new Date().toISOString()
+          }
+        };
+
+        // Send it to the "clicks" collection
+        client.addEvent("recordChairs1", recordChairs1, function(err, res){
+          if (err) {
+            // there was an error!
+          }
+          else {
+            // see sample response below
+          }
+        });
+      };
 
 
-  //********** visualization **********//
-  Keen.ready(function(){
-    
-    //popmusic test//
-    var music_clicks = new Keen.Query("count", {
-      eventCollection: "popmusic1"
-    });
-    client.draw(music_clicks, document.getElementById("my_chart"), {
-      // Custom configuration here
-    });
+
+      //clicks recorded
+      var multipleEvents = {
+        "visitor_clicks": [
+          { item: "goalEvent1"},
+          { item: "accessories1"},
+          { item: "popmusic1"},
+          { item: "recordTravel1"},
+          { item: "recordPolitics1"},
+          { item: "recordFootware1"},
+          { item: "recordFoodie1"},
+          { item: "recordChairs1"}
+        ]
+      };
+
+      // Send multiple events to several collections
+      client.addEvents(multipleEvents, function(err, res){
+        if (err) {
+          // there was an error!
+        }
+        else {
+          // see sample response below
+        }
+      });
 
 
-    //pie chart test//
-    var visitor_clicks = new Keen.Query("count", {
-      eventCollection: "visitor_clicks",
-      groupBy: "item"
-    });
-    client.draw(visitor_clicks, document.getElementById("count-pageviews-piechart"), {
-      chartType: "piechart",
-      title: "Clicks"
-    });
 
-  });
-</script>
+
+      //********** visualization **********//
+      //popmusic test//
+      // var client = new Keen({
+      //   projectId: "5512fc13672e6c7ecb96c65d",
+      //   readKey: "4543c056ee4dcc133f981ca07c44b9ae2780ba81374dd266dad3808a13ad9fc84ef3616c9748f5d5764fd3f186b70c9db3ed7c8db46903103de2b600ce48441d2a9fd4c627e5b302ad75b12d55cd07852215f018e3072c6a5fe3f9af210e0b53fdf78e47819879dfe3a25402d00da0f4"
+      // });
+
+      Keen.ready(function(){
+        var count = new Keen.Query("count", {
+          eventCollection: "recordFoodie1"
+        });
+        client.draw(count, document.getElementById("my_chart"), {
+          chartType: "metric",
+          title: "Total Goals",
+          colors: ["#49c5b1"]
+        });
+
+
+        //pie chart test//
+        var visitor_clicks = new Keen.Query("count", {
+          eventCollection: "visitor_clicks",
+          groupBy: "item"
+        });
+        client.draw(visitor_clicks, document.getElementById("count-pageviews-piechart"), {
+          chartType: "piechart",
+          title: "Clicks"
+        });
+      });
+    </script>
 
 </html>
