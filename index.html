@@ -122,7 +122,13 @@
         </div>
     </div>
 </body>
+
+
+
+
+
 <script type="text/javascript">
+
 
   //********** Configuring Instance of Project **********//
   var client = new Keen({
@@ -138,7 +144,7 @@
   
 
   //********** Listeners **********//
-  $( "#firstgoal" ).on( "click", goalEvent1);
+  $( "#distraction_eyewear" ).on( "click", recordEyewear1);
   $( "#distraction_accessories" ).on( "click", recordAccessories1);
   $( "#distraction_popmusic" ).on( "click", recordPop1);
   $( "#distraction_travel" ).on( "click", recordTravel1);
@@ -152,10 +158,25 @@
 
   //********** CTAs as Data Objects **********//
 
+  function recordEyewear1(){
+    // Create a data object with the properties you want to send
+    var recordEyewear1 = {
+      item: "recordEyewear1",
+      referrer: document.referrer,
+      keen: {
+        timestamp: new Date().toISOString()
+      }
+    };
+
+    // Send it to the "accessories" collection
+    client.addEvent("recordEyewear1", recordEyewear1, function(err, res){
+    });
+  };
+
   function recordAccessories1(){
     // Create a data object with the properties you want to send
     var recordAccessories1 = {
-      item: "accessories1",
+      item: "recordAccessories1",
       referrer: document.referrer,
       keen: {
         timestamp: new Date().toISOString()
@@ -170,7 +191,7 @@
   function recordPop1(){
     // Create a data object with the properties you want to send
     var recordPopMusic1 = {
-      item: "popmusic1",
+      item: "recordPopmusic1",
       referrer: document.referrer,
       keen: {
         timestamp: new Date().toISOString()
@@ -185,7 +206,7 @@
   function recordTravel1(){
     // Create a data object with the properties you want to send
     var recordTravel1 = {
-      item: "travel1",
+      item: "recordTravel1",
       referrer: document.referrer,
       keen: {
         timestamp: new Date().toISOString()
@@ -258,12 +279,14 @@
   };
 
 
+  
+
   //********** Recording Clicks as Group **********//
   var multipleEvents = {
     "visitor_clicks": [
-      { item: "goalEvent1"},
-      { item: "accessories1"},
-      { item: "popmusic1"},
+      { item: "recordEyewear1"},
+      { item: "recordAccessories1"},
+      { item: "recordPopmusic1"},
       { item: "recordTravel1"},
       { item: "recordPolitics1"},
       { item: "recordFootware1"},
@@ -271,10 +294,11 @@
       { item: "recordChairs1"}
     ]
   };
-
   // Send multiple events to several collections
   client.addEvents(multipleEvents, function(err, res){
   });
+
+
 
 
 
@@ -284,7 +308,6 @@
     //popmusic test//
     var count = new Keen.Query("count", {
       eventCollection: "recordFoodie1"
-      alert("dude");
     });
     client.draw(count, document.getElementById("my_chart"), {
       chartType: "metric",
