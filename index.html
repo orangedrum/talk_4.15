@@ -118,6 +118,7 @@
                 <div id="count-pageviews-piechart"></div>
               </div> 
             </div>
+            <button class="btn btn-danger" id="big_bad_delete">Delete Analytics</button>
           </div>
         </div>
     </div>
@@ -144,137 +145,139 @@
   
 
   //********** Listeners **********//
-  $( "#distraction_eyewear" ).on( "click", recordEyewear1);
-  $( "#distraction_accessories" ).on( "click", recordAccessories1);
-  $( "#distraction_popmusic" ).on( "click", recordPop1);
-  $( "#distraction_travel" ).on( "click", recordTravel1);
-  $( "#distraction_politics" ).on( "click", recordPolitics1);
-  $( "#footware_first" ).on( "click", recordFootware1);
-  $( "#foodie_first" ).on( "click", recordFoodie1);
-  $( "#chairs_first" ).on( "click", recordChairs1);
+  $( "#distraction_eyewear" ).on( "click", recordEyewear);
+  $( "#distraction_accessories" ).on( "click", recordAccessories);
+  $( "#distraction_popmusic" ).on( "click", recordPop);
+  $( "#distraction_travel" ).on( "click", recordTravel);
+  $( "#distraction_politics" ).on( "click", recordPolitics);
+  $( "#footware_first" ).on( "click", recordFootware);
+  $( "#foodie_first" ).on( "click", recordFoodie);
+  $( "#chairs_first" ).on( "click", recordChairs);
+
+  $("#big_bad_delete").on("click", deleteKeenData);
 
 
   
 
   //********** CTAs as Data Objects **********//
 
-  function recordEyewear1(){
+  function recordEyewear(){
     // Create a data object with the properties you want to send
-    var recordEyewear1 = {
-      item: "recordEyewear1",
+    var recordEyewear = {
+      item: "recordEyewear",
       referrer: document.referrer,
       keen: {
         timestamp: new Date().toISOString()
       }
     };
 
-    // Send it to the "accessories" collection
-    client.addEvent("recordEyewear1", recordEyewear1, function(err, res){
+    // Send it to the collection
+    client.addEvent("recordEyewear", recordEyewear, function(err, res){
     });
   };
 
-  function recordAccessories1(){
+  function recordAccessories(){
     // Create a data object with the properties you want to send
-    var recordAccessories1 = {
-      item: "recordAccessories1",
+    var recordAccessories = {
+      item: "recordAccessories",
       referrer: document.referrer,
       keen: {
         timestamp: new Date().toISOString()
       }
     };
 
-    // Send it to the "accessories" collection
-    client.addEvent("recordAccessories1", recordAccessories1, function(err, res){
+    // Send it to the collection
+    client.addEvent("recordAccessories", recordAccessories, function(err, res){
     });
   };
 
-  function recordPop1(){
+  function recordPop(){
     // Create a data object with the properties you want to send
-    var recordPopMusic1 = {
-      item: "recordPopmusic1",
+    var recordPopMusic = {
+      item: "recordPopmusic",
       referrer: document.referrer,
       keen: {
         timestamp: new Date().toISOString()
       }
     };
 
-    // Send it to the "popmusic" collection
-    client.addEvent("recordPopMusic1", recordPopMusic1, function(err, res){
+    // Send it to the collection
+    client.addEvent("recordPopMusic", recordPopMusic, function(err, res){
     });
   };
 
-  function recordTravel1(){
+  function recordTravel(){
     // Create a data object with the properties you want to send
-    var recordTravel1 = {
-      item: "recordTravel1",
+    var recordTravel = {
+      item: "recordTravel",
       referrer: document.referrer,
       keen: {
         timestamp: new Date().toISOString()
       }
     };
 
-    // Send it to the "purchases" collection
-    client.addEvent("recordTravel1", recordTravel1, function(err, res){
+    // Send it to the collection
+    client.addEvent("recordTravel", recordTravel, function(err, res){
     });
   };
 
-  function recordPolitics1(){
+  function recordPolitics(){
     // Create a data object with the properties you want to send
-    var recordPolitics1 = {
-      item: "recordPolitics1",
+    var recordPolitics = {
+      item: "recordPolitics",
       referrer: document.referrer,
       keen: {
         timestamp: new Date().toISOString()
       }
     };
 
-    // Send it to the "purchases" collection
-    client.addEvent("recordPolitics1", recordPolitics1, function(err, res){
+    // Send it to the collection
+    client.addEvent("recordPolitics", recordPolitics, function(err, res){
     });
   };
 
-  function recordFootware1(){
+  function recordFootware(){
     // Create a data object with the properties you want to send
-    var recordFootware1 = {
-      item: "recordFootware1",
+    var recordFootware = {
+      item: "recordFootware",
       referrer: document.referrer,
       keen: {
         timestamp: new Date().toISOString()
       }
     };
 
-    // Send it to the "purchases" collection
-    client.addEvent("recordFootware1", recordFootware1, function(err, res){
+    // Send it to the collection
+    client.addEvent("recordFootware", recordFootware, function(err, res){
     });
   };
 
-  function recordFoodie1(){
+  function recordFoodie(){
     // Create a data object with the properties you want to send
-    var recordFoodie1 = {
-      item: "recordFoodie1",
+    var recordFoodie = {
+      item: "recordFoodie",
       referrer: document.referrer,
       keen: {
         timestamp: new Date().toISOString()
       }
     };
 
-    // Send it to the "purchases" collection
-    client.addEvent("recordFoodie1", recordFoodie1, function(err, res){
+    // Send it to the collection
+    client.addEvent("recordFoodie", recordFoodie, function(err, res){
     });
   };
 
-  function recordChairs1(){
+  function recordChairs(){
     // Create a data object with the properties you want to send
-    var recordChairs1 = {
-      item: "recordChairs1",
+    var recordChairs = {
+      item: "recordChairs",
       referrer: document.referrer,
       keen: {
         timestamp: new Date().toISOString()
       }
     };
 
-    // Send it to the "clicks" collection
-    client.addEvent("recordChairs1", recordChairs1, function(err, res){
+    // Send it to the collection
+    client.addEvent("recordChairs", recordChairs, function(err, res){
     });
   };
 
@@ -284,14 +287,14 @@
   //********** Recording Clicks as Group **********//
   var multipleEvents = {
     "visitor_clicks": [
-      { item: "recordEyewear1"},
-      { item: "recordAccessories1"},
-      { item: "recordPopmusic1"},
-      { item: "recordTravel1"},
-      { item: "recordPolitics1"},
-      { item: "recordFootware1"},
-      { item: "recordFoodie1"},
-      { item: "recordChairs1"}
+      { item: "recordEyewear"},
+      { item: "recordAccessories"},
+      { item: "recordPopmusic"},
+      { item: "recordTravel"},
+      { item: "recordPolitics"},
+      { item: "recordFootware"},
+      { item: "recordFoodie"},
+      { item: "recordChairs"}
     ]
   };
   // Send multiple events to several collections
@@ -307,7 +310,7 @@
 
     //popmusic test//
     var count = new Keen.Query("count", {
-      eventCollection: "recordFoodie1"
+      eventCollection: "recordFoodie"
     });
     client.draw(count, document.getElementById("my_chart"), {
       chartType: "metric",
@@ -323,9 +326,88 @@
     });
     client.draw(visitor_clicks, document.getElementById("count-pageviews-piechart"), {
       chartType: "piechart",
-      title: "Clicks"
+      title: "Clicks on CTAs"
     });
   });
+
+  
+  //********** Delete All The Things **********//
+  function deleteKeenData() {
+    //Eyewear Data
+    // $.ajax({
+    //   url: 'https://api.keen.io/3.0/projects/5512fc13672e6c7ecb96c65d/events/recordEyewear?api_key=034BF244B54589BF10EFDE5BCDEF3381',
+    //   type: 'DELETE',
+    //   success: function(result) {
+    //       alert('Keen data cleared!');
+    //   }
+    // });
+    //Accessories Data
+    // $.ajax({
+    //   url: 'https://api.keen.io/3.0/projects/5512fc13672e6c7ecb96c65d/events/recordAccessories?api_key=034BF244B54589BF10EFDE5BCDEF3381',
+    //   type: 'DELETE',
+    //   success: function(result) {
+    //       alert('Keen data cleared!');
+    //   }
+    // });
+    //Popmusic Data
+    // $.ajax({
+    //   url: 'https://api.keen.io/3.0/projects/5512fc13672e6c7ecb96c65d/events/recordPopmusic?api_key=034BF244B54589BF10EFDE5BCDEF3381',
+    //   type: 'DELETE',
+    //   success: function(result) {
+    //       alert('Keen data cleared!');
+    //   }
+    // });
+    //Travel Data
+    // $.ajax({
+    //   url: 'https://api.keen.io/3.0/projects/5512fc13672e6c7ecb96c65d/events/recordTravel?api_key=034BF244B54589BF10EFDE5BCDEF3381',
+    //   type: 'DELETE',
+    //   success: function(result) {
+    //       alert('Keen data cleared!');
+    //   }
+    // });
+    //Politics Data
+    // $.ajax({
+    //   url: 'https://api.keen.io/3.0/projects/5512fc13672e6c7ecb96c65d/events/recordPolitics?api_key=034BF244B54589BF10EFDE5BCDEF3381',
+    //   type: 'DELETE',
+    //   success: function(result) {
+    //       alert('Keen data cleared!');
+    //   }
+    // });
+    //Footware Data
+    // $.ajax({
+    //   url: 'https://api.keen.io/3.0/projects/5512fc13672e6c7ecb96c65d/events/recordFootware?api_key=034BF244B54589BF10EFDE5BCDEF3381',
+    //   type: 'DELETE',
+    //   success: function(result) {
+    //       alert('Keen data cleared!');
+    //   }
+    // });
+    //Foodie Data
+    // $.ajax({
+    //   url: 'https://api.keen.io/3.0/projects/5512fc13672e6c7ecb96c65d/events/recordFoodie?api_key=034BF244B54589BF10EFDE5BCDEF3381',
+    //   type: 'DELETE',
+    //   success: function(result) {
+    //       alert('Keen data cleared!');
+    //   }
+    // });
+    //Chairs Data
+    // $.ajax({
+    //   url: 'https://api.keen.io/3.0/projects/5512fc13672e6c7ecb96c65d/events/recordChairs?api_key=034BF244B54589BF10EFDE5BCDEF3381',
+    //   type: 'DELETE',
+    //   success: function(result) {
+    //       alert('Keen data cleared!');
+    //   }
+    // });
+
+
+    //visitor_clicks Data
+    $.ajax({
+      url: 'https://api.keen.io/3.0/projects/5512fc13672e6c7ecb96c65d/events/visitor_clicks?api_key=034BF244B54589BF10EFDE5BCDEF3381',
+      type: 'DELETE',
+      success: function(result) {
+          alert('Keen data cleared!');
+      }
+    });
+  };
 </script>
 
 </html>
